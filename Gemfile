@@ -44,3 +44,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'travis'
+
+group :production do
+  gem 'rails_12factor', '0.0.2'
+end
