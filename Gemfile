@@ -49,3 +49,9 @@ gem 'travis'
 group :production do
   gem 'rails_12factor', '0.0.2'
 end
+
+gem 'devise'
+
+group :development do
+  gem 'mailcatcher'
+end
