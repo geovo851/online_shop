@@ -21,4 +21,3 @@ deploy:
     rvm: 2.2.0
      - "rake db:migrate"
      - restart
-
