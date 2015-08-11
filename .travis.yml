@@ -9,6 +9,7 @@ gemfile:
 before_script:
 - psql -c 'create database ex_rails_test_db' -U postgres
 - bundle exec rake db:create db:migrate db:schema:load
+
 deploy:
   provider: heroku
   api_key:
