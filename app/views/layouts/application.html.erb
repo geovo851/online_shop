@@ -12,11 +12,11 @@
             
             <div id="header-right">
                 <% if user_signed_in? %>
-                    <span>Welcome, <%= current_user.email %></span>
+                    <span><%= current_user.email %></span>
                     <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-                    <%= link_to 'Admin panel', '#' %>
+                    <%= link_to 'Admin panel', admins_path %>
                 <% else %>
-                    <span>You are not signed in.</span>
+                    <span></span>
                     <%= link_to 'Sign in', new_user_session_path %> <%= link_to 'Sign up', new_user_registration_path %>
                 <% end %>
             </div>

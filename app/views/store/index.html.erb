@@ -1,0 +1,24 @@
+<h1>Goods</h1>
+
+<% if @goods.empty? %>
+  <b>No goods in store</b>
+<% else %>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+
+    <% @goods.each do |i| %>
+
+      <tr>
+        <td><%= link_to i.name, store_show_good_path(i) %></td>
+        <td><%= i.category.category if i.category %></td>
+        <td><%= i.price %>$</td>
+       </tr>
+
+    <% end %>
+
+  </table>
+<% end %>

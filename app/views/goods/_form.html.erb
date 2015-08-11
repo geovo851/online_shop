@@ -1,0 +1,20 @@
+<%= form_for @good do |form| %>
+    <table>
+        <tr>
+            <td><%= form.label :name %></td>
+            <td><%= form.text_field :name, size: 22 %></td>
+        </tr>
+        <tr>
+            <td><%= form.label :description %></td>
+            <td><%= form.text_area :description, rows: 2 %></td>
+        </tr>
+        <tr>
+            <td><%= form.label :price %> </td>
+            <td><%= form.text_field :price, size: 11 %></td>
+        </tr>
+        <tr>
+            <td><%= form.submit title_sumbit %></td>
+            <td></td>
+        </tr>
+    </table>
+<% end %>

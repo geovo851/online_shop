@@ -1,1 +1,35 @@
-<h1>Online shop for sale computer equipment.</h1>
+<h1>Goods</h1>
+
+<% if @goods.empty? %>
+  <b>No goods in store</b>
+<% else %>
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @goods.each do |i| %>
+
+      <tr>
+        <td><%= i.id %></td>
+        <td><%= link_to i.name, good_path(i) %></td>
+        <td><%= i.category.category if i.category %></td>
+        <td><%= i.price %>$</td>
+        <td><%= button_to 'Edit', edit_good_path(i),
+                method: :get %></td>
+        <td><%= button_to 'Delete', good_path(i),
+                method: :delete,
+                data: { confirm: 'You sure?' } %></td>
+       </tr>
+
+    <% end %>
+
+  </table>
+<% end %>
+
+<p><%= button_to 'Add product', new_good_path, method: :get %></p>

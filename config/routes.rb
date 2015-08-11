@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :categories
+  resources :goods
+  get 'admins' => 'admins#index'
   devise_for :users
-  root 'goods#index'
+  get 'store/show/:id' => 'store#show', as: 'store_show_good'
+  root 'store#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
