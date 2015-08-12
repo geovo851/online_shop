@@ -1,6 +1,6 @@
 class StoreController < ApplicationController
   def index
-    @goods = Good.all
+    @goods = Good.paginate(page: params[:page], :per_page => 10)
   end
   
   def show
