@@ -1,7 +1,9 @@
 <h1><%= @good.name %></h1>
+<p><%= image_tag(@good.photo_url) if @good.photo? %></p>
 <ul>
-  <li><%= @good.description %></li>
-  <li><%= @good.price %></li>
+  <li>Description: <%= @good.description %></li>
+  <li>Price: <%= @good.price %></li>
+  <li>Available: <%= @good.available ? 'Yes' : 'No' %></li>
 </ul>
 
-<h3><%= link_to 'back', root_path %></h3>
+<h3><%= link_to 'Back', root_path %></h3>

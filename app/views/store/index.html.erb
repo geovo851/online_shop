@@ -5,17 +5,22 @@
 <% else %>
   <table border="1">
     <tr>
-      <th>Name</th>
+      <th>Good</th>
       <th>Category</th>
       <th>Price</th>
+      <th>Available</th>
     </tr>
 
     <% @goods.each do |i| %>
 
       <tr>
-        <td><%= link_to i.name, store_show_good_path(i) %></td>
+        <td>
+            <%= image_tag(i.photo_url(:thumb)) if i.photo? %>
+            <%= link_to i.name, store_show_good_path(i) %>
+        </td>
         <td><%= i.category.category if i.category %></td>
         <td><%= i.price %>$</td>
+        <td><%= i.available ? 'Yes' : 'No' %></td>
        </tr>
 
     <% end %>

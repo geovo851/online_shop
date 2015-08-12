@@ -59,5 +59,7 @@
   text-align: center;
 }
 
-li { list-style-type: none;}
+#ul-type-none { 
+  list-style-type: none;
+}
 

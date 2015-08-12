@@ -1,4 +1,6 @@
 class GoodsController < ApplicationController
+  before_action :correct_user
+
   def index
     @goods = Good.all
   end
@@ -9,18 +11,21 @@ class GoodsController < ApplicationController
   # /goods/new GET
   def new
     @good = Good.new
+    @categories = Category.all
   end
 
   def edit
     @good = Good.find(params[:id])
+    @categories = Category.all
   end
 
   def create
     @good = Good.new(good_params)
-   
+
     if @good.save
       redirect_to goods_path
     else
+      @categories = Category.all
       render 'new'
     end
   end
@@ -31,6 +36,7 @@ class GoodsController < ApplicationController
     if @good.update(good_params)
       redirect_to goods_path
     else
+      @categories = Category.all
       render 'edit'
     end
   end
@@ -45,6 +51,10 @@ class GoodsController < ApplicationController
   private
     def good_params
       params.require(:good).permit(:name, :photo, :description, :category_id, 
-                                   :price)
+                                   :price, :available)
+    end
+
+    def correct_user
+      redirect_to(root_url) unless user_signed_in?
     end
 end

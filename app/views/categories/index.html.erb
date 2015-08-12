@@ -1,0 +1,33 @@
+<h1>Categories</h1>
+
+<% if @categories.empty? %>
+  <b>No categories in store</b>
+<% else %>
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Category</th>
+      <th colspan="2"></th>
+    </tr>
+
+    <% @categories.each do |i| %>
+
+      <tr>
+        <td><%= i.id %></td>
+        <td><%= link_to i.category, category_path(i) %></td>
+        <td><%= button_to 'Edit', edit_category_path(i),
+                method: :get %></td>
+        <td><%= button_to 'Delete', category_path(i),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+
+    <% end %>
+
+  </table>
+<% end %>
+
+<p>
+  <%= button_to 'Add category', new_category_path, method: :get %>
+  <%= button_to 'Back', admins_path, method: :get %>
+</p>

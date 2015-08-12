@@ -6,25 +6,29 @@
   <table border="1">
     <tr>
       <th>Id</th>
-      <th>Name</th>
+      <th>Good</th>
       <th>Category</th>
       <th>Price</th>
-      <th></th>
-      <th></th>
+      <th>Available</th>
+      <th colspan="2"></th>
     </tr>
 
     <% @goods.each do |i| %>
 
       <tr>
         <td><%= i.id %></td>
-        <td><%= link_to i.name, good_path(i) %></td>
+        <td>
+            <%= image_tag(i.photo_url(:thumb)) if i.photo? %>
+            <%= link_to i.name, good_path(i) %>
+        </td>
         <td><%= i.category.category if i.category %></td>
         <td><%= i.price %>$</td>
+        <td><%= i.available ? 'Yes' : 'No' %></td>
         <td><%= button_to 'Edit', edit_good_path(i),
                 method: :get %></td>
         <td><%= button_to 'Delete', good_path(i),
                 method: :delete,
-                data: { confirm: 'You sure?' } %></td>
+                data: { confirm: 'Are you sure?' } %></td>
        </tr>
 
     <% end %>
@@ -32,4 +36,7 @@
   </table>
 <% end %>
 
-<p><%= button_to 'Add product', new_good_path, method: :get %></p>
+<p>
+  <%= button_to 'Add good', new_good_path, method: :get %>
+  <%= button_to 'Back', admins_path, method: :get %>
+</p>

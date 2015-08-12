@@ -55,3 +55,8 @@ gem 'devise'
 group :development do
   gem 'mailcatcher'
 end
+
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'will_paginate'

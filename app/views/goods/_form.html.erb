@@ -1,20 +1,40 @@
-<%= form_for @good do |form| %>
+<%= image_tag(@good.photo_url(:thumb)) if @good.photo? %></td>
+
+<%= form_for @good, :html => {:multipart => true} do |form| %>
+    <%= render 'shared/error_messages', object: form.object %>
     <table>
         <tr>
             <td><%= form.label :name %></td>
             <td><%= form.text_field :name, size: 22 %></td>
         </tr>
         <tr>
+            <td><%= form.label :category %></td>
+            <td>
+                <%= form.collection_select(:category_id, @categories, 
+                    :id, :category, {:prompt => 'Please select category'}) %>
+            </td>
+        </tr>
+        <tr>
             <td><%= form.label :description %></td>
-            <td><%= form.text_area :description, rows: 2 %></td>
+            <td><%= form.text_area :description, cols: 33, rows: 2 %></td>
         </tr>
         <tr>
             <td><%= form.label :price %> </td>
             <td><%= form.text_field :price, size: 11 %></td>
         </tr>
         <tr>
+            <td><%= form.label :photo %></td>
+            <td><%= form.file_field :photo %></td>
+        </tr>
+        <tr>
+            <td><%= form.label :available %></td>
+            <td><%= form.check_box :available %></td>
+        </tr>
+        <tr>
             <td><%= form.submit title_sumbit %></td>
-            <td></td>
         </tr>
     </table>
 <% end %>
+
+<div><%= button_to 'Back', goods_path, method: :get %></div>
+

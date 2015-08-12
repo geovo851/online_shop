@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :correct_user
+
   def index
     @categories = Category.all
   end
@@ -44,6 +46,10 @@ class CategoriesController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:category)
+    end
+
+    def correct_user
+      redirect_to(root_url) unless user_signed_in?
     end
 end
