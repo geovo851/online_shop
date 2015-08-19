@@ -21,6 +21,12 @@
         <td><%= i.category.category if i.category %></td>
         <td><%= i.price %>$</td>
         <td><%= i.available ? 'Yes' : 'No' %></td>
+        <td>
+          <%= button_to 'Add to cart', goods_orders_path(good_id: i), 
+                    params: { price: i.price },
+                    class: "btn btn-primary btn-sm" %>
+        </td>
+
        </tr>
 
     <% end %>

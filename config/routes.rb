@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :orders
+  resources :goods_orders
   resources :categories
   resources :goods
   get 'admins' => 'admins#index'

@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Orders and Carts</h1>
+
+  <% if @orders.empty? %>
+    <b>No orders in store</b>
+  <% else %>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Order/Cart</th>
+        <th>Status</th>
+        <th>User</th>
+        <th>Product</th>
+        <th>Count</th>
+        <th>Sum</th>
+      </tr>
+
+      <% @orders.each do |o| %>
+        <% o.goods_orders.each do |p| %>
+          <tr>
+            <td><%= o.id %></td>
+            <td><%= o.order ? 'Order' : 'Cart' %></td>
+            <td><%= o.status %></td>
+            <td><%= o.user.email if o.user %></td>
+            <td><%= p.good.name if p.good %></td>
+            <td><%= p.count %></td>
+            <td><%= p.count * p.price %>$</td>
+          </tr>
+        <% end %>
+      <% end %>
+
+    </table>
+  <% end %>
+
+  <h3><%= link_to 'back', admins_path %></h3>
+</div>
