@@ -5,7 +5,7 @@
     <div class="col-sm-12 col-md-12">
 
       <div class="page-header">
-        <h1>Cart <%= @order.id %></h1>
+        <h1>Cart</h1>
       </div>
 
       <% if @order.goods_orders.empty? %>
@@ -46,7 +46,7 @@
         </div>
       <% end %>
 
-      <p>Total sum: <%= total_sum %>$</p>
+      <p id="price">Total sum: <%= total_sum %>$</p>
       
       <p>
         <%= button_to 'Back', root_path, method: :get, class: "btn btn-default" %>

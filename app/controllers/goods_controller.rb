@@ -8,7 +8,7 @@ class GoodsController < ApplicationController
   def show
     @good = Good.find(params[:id])
   end
-  # /goods/new GET
+ 
   def new
     @good = Good.new
     @categories = Category.all

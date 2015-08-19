@@ -1,39 +1,28 @@
-<h1>Goods</h1>
+<% provide(:goods, 'active') %>
 
-<% if @goods.empty? %>
-  <b>No goods in store</b>
-<% else %>
-  <table border="1">
-    <tr>
-      <th>Good</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Available</th>
-    </tr>
+<div class="container-fluid"> 
+  <div class="row">
+      <div class="page-header">
+        <h1>Goods</h1>
+      </div>
 
-    <% @goods.each do |i| %>
+      <div class="row">
+        <div class="col-sm-10 col-md-8">
+          <% if @goods.empty? %>
+            <b>No goods in store</b>
+          <% else %>
 
-      <tr>
-        <td>
-            <%= image_tag(i.photo_url(:thumb)) if i.photo? %>
-            <%= link_to i.name, store_show_good_path(i) %>
-        </td>
-        <td><%= i.category.category if i.category %></td>
-        <td><%= i.price %>$</td>
-        <td><%= i.available ? 'Yes' : 'No' %></td>
-        <td>
-          <%= button_to 'Add to cart', goods_orders_path(good_id: i), 
-                    params: { price: i.price },
-                    class: "btn btn-primary btn-sm" %>
-        </td>
+            <div class="table-responsive">
+              <table class="table ">
+                <tbody id="goods">
+                  <%= render partial: "good", :collection => @goods, :as => :good %>
+                </tbody>
+              </table>
+            </div>
+            <div id="paginator", class="paginate-centre"><%= paginate @goods, :remote => true %></div>
+          <% end %>
+        </div>
+      </div>
 
-       </tr>
-
-    <% end %>
-
-  </table>
-<% end %>
-
-<p>
-  <%= will_paginate @goods %>
-</p>
+  </div>
+</div>

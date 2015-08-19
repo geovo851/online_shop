@@ -1,0 +1,11 @@
+<% order.goods_orders.each do |p| %>
+  <tr>
+    <td><%= order.id %></td>
+    <td><%= order.order ? 'Order' : 'Cart' %></td>
+    <td><%= order.status %></td>
+    <td><%= order.user.email if order.user %></td>
+    <td><%= p.good.name if p.good %></td>
+    <td><%= p.count %></td>
+    <td><%= p.count * p.price %>$</td>
+  </tr>
+<% end %>

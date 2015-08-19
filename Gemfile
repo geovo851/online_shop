@@ -60,3 +60,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'will_paginate'
+
+gem 'bootstrap-sass'
+
+gem 'kaminari'

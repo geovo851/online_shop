@@ -1,52 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sale computer equipment</title>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-        <%= csrf_meta_tags %>
-    </head>
-    <body>
-        
-        <div id="header">
-            
-            <div id="header-right">
-                <% if user_signed_in? %>
-                    <span><%= current_user.email %></span>
-                    <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-                    <%= link_to 'Admin panel', admins_path %>
-                <% else %>
-                    <span></span>
-                    <%= link_to 'Sign in', new_user_session_path %> <%= link_to 'Sign up', new_user_registration_path %>
-                <% end %>
-            </div>
-            
-            <div id="header-left">
-                <%= link_to 'Sale computer equipment', root_path %>
-            </div>
-            
-        </div>
+  <head>
+    <title>Sale computer equipment</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-        <div id="main">
-            <div id="bodycopy">
+    <%= render 'shared/navbar' %>
 
-                <p class="notice"><%= notice %></p>
-                <p class="alert"><%= alert %></p>
+    <div class='main-page-content <%= controller.controller_name %>'>
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert #{bootstrap_class_for(key)} flash") %>
+        <% end %>
 
-                <%= yield %>
+        <%= yield %>
+      </div>
+    </div>
 
-            </div>
-
-            <div id="sidebar">
-                <ul id="ul-type-none">
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div id="footer">© Company 2015. All Rights Reserved.</div>
-
-    </body>
+    <footer>
+      <p id="footer">&copy; Company 2015. All Rights Reserved.</p>
+    </footer>
+  </body>
 </html>

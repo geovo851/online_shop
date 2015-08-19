@@ -1,9 +1,21 @@
-<h1><%= @good.name %></h1>
-<p><%= image_tag(@good.photo_url) if @good.photo? %></p>
-<ul>
-  <li>Description: <%= @good.description %></li>
-  <li>Price: <%= @good.price %></li>
-  <li>Available: <%= @good.available ? 'Yes' : 'No' %></li>
-</ul>
+<div class="container-fluid"> 
+  <div class="row">
 
-<h3><%= link_to 'Back', root_path %></h3>
+    <div class="col-sm-9 col-md-10">
+
+    <div class="container">
+      <div class="page-header">
+        <h1 id="name_good"><%= @good.name %></h1>
+      </div>
+      <p><%= image_tag(@good.photo_url) if @good.photo? %></p>
+      <ul>
+        <li>Description: <%= @good.description %></li>
+        <li id="price">Price: <%= @good.price %>$</li>
+        <li>Available: <%= @good.available ? 'Yes' : 'No' %></li>
+      </ul>
+
+      <h3><%= link_to 'Back', :back %></h3>
+    </div>
+    
+  </div>
+</div>

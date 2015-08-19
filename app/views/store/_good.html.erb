@@ -1,0 +1,17 @@
+<tr>
+  <td><%= image_tag(good.photo_url(:thumb)) if good.photo? %> </td>
+  <td>
+    <p id="name_good"><%= link_to good.name, store_show_good_path(good) %></p>
+    <p><%= link_to good.description, store_show_good_path(good) %></p>
+    <p><%= link_to 'Reviews', store_show_good_path(good) %></p>
+  </td>
+  <td>
+    <p id="price"><%= good.price %>$</p>
+    <p>Available: <%= good.available ? 'Yes' : 'No' %></p>
+    <p>
+      <%= button_to 'Add to cart', goods_orders_path(good_id: good), 
+                    params: { price: good.price },
+                    class: "btn btn-primary btn-sm" %>
+    </p>
+  </td>
+</tr>
