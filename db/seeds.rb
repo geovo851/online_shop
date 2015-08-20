@@ -11,39 +11,6 @@ roles = Role.create([
   {title: 'user'}
 ]) if Role.count == 0
 
-
-goods_orders = GoodsOrder.all
-
-if goods_orders
-  goods_orders.each do |g|
-    g.destroy
-  end
-end
-
-orders = Order.all
-
-if orders
-  orders.each do |o|
-    o.destroy
-  end
-end
-
-goods = Good.all
-
-if goods
-  goods.each do |g|
-    g.destroy
-  end
-end
-
-categories = Category.all
-
-if categories
-  categories.each do |c|
-    c.destroy
-  end
-end
-
 categories = []
 categories << Category.create(category: "Monitors")
 categories << Category.create(category: "Processors")

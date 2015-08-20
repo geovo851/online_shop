@@ -17,7 +17,6 @@ deploy:
   app: online-shop-1
   run:
      - rake db:migrate
-     - rake db:seed
      - restart
   on:
     branch: development
