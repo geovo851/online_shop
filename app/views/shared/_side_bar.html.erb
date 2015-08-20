@@ -1,0 +1,13 @@
+<div class="col-sm-3 col-md-2 sidebar">
+
+  <ul class="nav nav-sidebar">
+    <% @categories.each do |c| %>
+      <% category_id = "category_#{c.id}".to_sym %>
+      <li>
+        <%= link_to c.category, store_search_goods_path(c.id), 
+                    class: "btn btn-info #{yield(category_id)}" %>
+      </li>
+    <% end %>
+  </ul>
+
+</div>

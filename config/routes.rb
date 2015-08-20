@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   resources :goods
   get 'admins' => 'admins#index'
   devise_for :users
+
+  get 'store/delivery' => 'store#delivery', as: 'store_delivery'
+
+  get 'store/guarantee' => 'store#guarantee', as: 'store_guarantee'
+  get 'store/contact' => 'store#contact', as: 'store_contact'
+
+  get 'store/search/:id' => 'store#search_goods', as: 'store_search_goods'
   get 'store/show/:id' => 'store#show', as: 'store_show_good'
   root 'store#index'
   # The priority is based upon order of creation: first created -> highest priority.

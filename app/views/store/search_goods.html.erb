@@ -1,4 +1,4 @@
-<% provide(:goods, 'active') %>
+<% provide(@category_id.to_sym, 'active') %>
 
 <div class="container-fluid"> 
   <div class="row">
@@ -13,9 +13,9 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-10 col-md-8">
+        <div class="col-sm-10 col-md-8 sidebar">
           <% if @goods.empty? %>
-            <b>No goods in store</b>
+            <b>Goods not found</b>
           <% else %>
 
             <div class="table-responsive">
@@ -25,10 +25,15 @@
                 </tbody>
               </table>
             </div>
-            <div id="paginator", class="paginate-centre"><%= paginate @goods, :remote => true %></div>
+            
+            <div id="paginator", class="paginate-centre">
+              <%= paginate @goods, :remote => true %>
+            </div>
+
           <% end %>
         </div>
       </div>
 
+    </div>
   </div>
 </div>

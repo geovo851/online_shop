@@ -25,29 +25,15 @@
               <th colspan="2"></th>
             </tr>
           </thead>
-
-          <% @categories.each do |i| %>
-          
-            <tbody>
-              <tr class="info">
-                <td><%= i.id %></td>
-                <td><%= link_to i.category, category_path(i) %></td>
-                <td><%= button_to 'Edit', edit_category_path(i),
-                        method: :get, class: "btn btn-success btn-xs" %></td>
-                <td><%= button_to 'Delete', category_path(i),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' },
-                        class: "btn btn-danger btn-xs" %></td>
-               </tr>
-            </tbody>
-          <% end %>
-
+          <tbody id="categories">
+            <%= render partial: "category", :collection => @categories, :as => :category %>
+          </tbody>
         </table>
-      <% end %>
-
-      <div id="paginate-centre">
-        <%= will_paginate %>
       </div>
+      <div id="paginator", class="paginate-centre">
+        <%= paginate @categories, :remote => true %>
+      </div>
+      <% end %>
 
       <p>
         <%= button_to 'Back', admins_path, method: :get, class: "btn btn-default" %>

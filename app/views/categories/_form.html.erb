@@ -1,14 +1,19 @@
-<%= form_for @category do |form| %>
-    <%= render 'shared/error_messages', object: form.object %>
-    <table>
-        <tr>
-            <td><%= form.label :name %></td>
-            <td><%= form.text_field :category, size: 22 %></td>
-        </tr>
-        <tr>
-            <td><%= form.submit title_sumbit %></td>
-        </tr>
-    </table>
+<%= form_for @category, :html => { class: "form-horizontal" } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :category, size: 22, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-4">
+      <%= f.submit title_sumbit, class: "btn btn-primary btn-sm" %>
+    </div>
+  </div>
+
 <% end %>
 
-<div><%= button_to 'Back', categories_path, method: :get %></div>
+<div><%= button_to 'Back', categories_path, method: :get, class: "btn btn-default" %></div>

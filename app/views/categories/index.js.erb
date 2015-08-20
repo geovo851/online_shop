@@ -1,0 +1,3 @@
+$('tbody#categories').html('<%= escape_javascript render(partial: "category", :collection => @categories, :as => :category) %>');
+
+$('#paginator').html('<%= escape_javascript(paginate(@categories, :remote => true).to_s) %>');

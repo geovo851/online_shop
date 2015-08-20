@@ -29,42 +29,16 @@
               <th colspan="2"></th>
             </tr>
           </thead>
-
-          <% @goods.each do |i| %>
-
-            <tbody>
-              <tr class="info">
-                <td><%= i.id %></td>
-                <td>
-                    <p><%= image_tag(i.photo_url(:thumb)) if i.photo? %></p>
-                    <p id="name_good"><%= link_to i.name, good_path(i) %></p>
-                </td>
-                <td><%= link_to i.description, good_path(i) %></td>
-                <td><%= i.category.category if i.category %></td>
-                <td id="price"><%= i.price %>$</td>
-                <td><%= i.available ? 'Yes' : 'No' %></td>
-                <td>
-                  <%= button_to 'Edit', edit_good_path(i),
-                          method: :get, class: "btn btn-success btn-xs" %>
-                </td>
-                <td>
-                  <%= button_to 'Delete', good_path(i),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' }, 
-                        class: "btn btn-danger btn-xs" %>
-                </td>
-              </tr>
-            </tbody>
-          <% end %>
-
+          <tbody id="goods">
+            <%= render partial: "good", :collection => @goods, :as => :good %>
+          </tbody>
         </table>
+        </div>
+        <div id="paginator", class="paginate-centre">
+          <%= paginate @goods, :remote => true %>
         </div>
       <% end %>
 
-      <div id="paginate-centre">
-        <%= will_paginate %>
-      </div>
-      
       <p>
         <%= button_to 'Back', admins_path, method: :get, class: "btn btn-default" %>
       </p>

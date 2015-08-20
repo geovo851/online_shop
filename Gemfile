@@ -59,8 +59,8 @@ end
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem 'will_paginate'
-
 gem 'bootstrap-sass'
 
 gem 'kaminari'
+
+gem 'declarative_authorization', github: "stffn/declarative_authorization"

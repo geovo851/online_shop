@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  filter_resource_access :attribute_check => true
 
   def index
     @orders = Order.page(params[:page]).per(10)

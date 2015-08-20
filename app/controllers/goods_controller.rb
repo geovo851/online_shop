@@ -1,8 +1,13 @@
 class GoodsController < ApplicationController
-  before_action :correct_user
+  filter_resource_access
 
   def index
-    @goods = Good.paginate(page: params[:page], :per_page => 10)
+    @goods = Good.page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html
+      format.js {}
+    end
   end
   
   def show
@@ -18,7 +23,7 @@ class GoodsController < ApplicationController
     @good = Good.find(params[:id])
     @categories = Category.all
   end
-
+   filter_resource_access
   def create
     @good = Good.new(good_params)
 
@@ -52,9 +57,5 @@ class GoodsController < ApplicationController
     def good_params
       params.require(:good).permit(:name, :photo, :description, :category_id, 
                                    :price, :available)
-    end
-
-    def correct_user
-      redirect_to(root_url) unless user_signed_in?
     end
 end

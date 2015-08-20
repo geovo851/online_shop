@@ -1,0 +1,3 @@
+$('tbody#goods').html('<%= escape_javascript render(partial: "good", :collection => @goods, :as => :good) %>');
+
+$('#paginator').html('<%= escape_javascript(paginate(@goods, :remote => true).to_s) %>');

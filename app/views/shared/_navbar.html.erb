@@ -14,9 +14,9 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-left">
         <li class="<%= yield(:goods) %>"><%= link_to 'Goods', root_path %></li>
-        <li><%= link_to 'Delivery and payment', '#' %></li>
-        <li><%= link_to 'Guarantee', '#' %></li>
-        <li><%= link_to 'Contact us', '#' %></li>
+        <li class="<%= yield(:delivery) %>"><%= link_to 'Delivery and payment', store_delivery_path %></li>
+        <li class="<%= yield(:guarantee) %>"><%= link_to 'Guarantee', store_guarantee_path %></li>
+        <li class="<%= yield(:contact) %>"><%= link_to 'Contact us', store_contact_path %></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right"> 
@@ -43,9 +43,12 @@
               </li>
             </ul>
           </li>
-          <li><%= link_to 'Admin panel', admins_path %></li>
+
+          <% if permitted_to? :index, :admins %>
+            <li><%= link_to 'Admin panel', admins_path %></li>
+          <% end %>
           
-          <% else %>
+        <% else %>
 
           <li class="<%= yield(:sign_in) %>">
             <%= link_to 'Sign in', new_user_session_path %>
