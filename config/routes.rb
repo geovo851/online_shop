@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'store/delivery' => 'store#delivery', as: 'store_delivery'
 
-  get 'store/guarantee' => 'store#guarantee', as: 'store_guarantee'
+  get 'store/about' => 'store#about', as: 'store_about'
   get 'store/contact' => 'store#contact', as: 'store_contact'
 
   get 'store/search/:id' => 'store#search_goods', as: 'store_search_goods'

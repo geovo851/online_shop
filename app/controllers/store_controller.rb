@@ -39,7 +39,7 @@ class StoreController < ApplicationController
     count_in_cart
   end
 
-  def guarantee
+  def about
     @categories = Category.all
     count_in_cart
   end

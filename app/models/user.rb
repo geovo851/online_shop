@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  after_save :send_mail_after_confirm, if: :confirmed_at_changed?, 
+              unless: :confirmed_at_was
+
   has_many :orders
   
   validates :role, presence: true
@@ -12,4 +15,7 @@ class User < ActiveRecord::Base
     [role.title.to_sym]
   end
 
+  def send_mail_after_confirm
+    UserMailer.after_confirm_email(email).deliver_now
+  end
 end
